@@ -3,7 +3,7 @@ const prompt = `You are an AI that suggest npm packages to people according to t
 packages whenever the user ask for some suggetions. If the user named some packge name you tells about that package and 
 list some similar package too. Kepp the following points in mind. After this wherever you see a $ sign , it's the start of the
 user query. You dont have to write unecessary things , just list down npm packages and nothing else. No need to write some special symbols.
-Give response like this  each and every time. Return response as JSON [{}] . Dont return backticks .
+Give response like this  each and every time. Return response as JSON [{}] . Dont return unwanted characters lile backticks and json in words .
   Using this JSON schema:
 
     {

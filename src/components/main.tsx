@@ -12,25 +12,33 @@ export default function Main() {
     const [query, setQuery] = useState<string>("");
     const [response, setResponse] = useState<responseType[] | undefined>(undefined);
     const [loading, setLoading] = useState<boolean>(false);
+    const [error,setError] = useState<string>("");
 
     const generateResponse = async () => {
         try {
+            setLoading(true);
+            setError(""); // Clear error state at the start of the function
             if (query) {
-                setLoading(true);
                 const result = await ai.generate(query);
-                if (typeof result !== "string") {
-                    throw new Error("Unexpected response format. Expected a JSON string.");
+                
+                // Check if result is empty or not a string
+                if (!result || typeof result !== "string") {
+                    throw new Error("Empty or unexpected response format.");
                 }
+                
                 const parsedResult = JSON.parse(result) as responseType[];
                 setResponse(parsedResult);
                 setQuery("");
-                setLoading(false);
             }
         } catch (error) {
-            console.log(error);
-            toast.error("Error"); // Assuming toast.error shows an error message
+            console.error("Error generating response:", error);
+            setError("An error occurred while generating response. Please try again.");
+            toast.error("An error occurred. Please try again."); // Assuming toast.error shows an error message
+        } finally {
+            setLoading(false);
         }
     };
+    
 
     return (
         <div className="flex justify-center items-start h-screen bg-white">
@@ -59,11 +67,13 @@ export default function Main() {
                 </div>
 
                 <div className="mt-8">
-                    {response ? (
-                        response.map((item, idx) => (
-                            <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description }} />
-                        ))
-                    ) : null}
+                {error ? <p className="text-7xl flex">{error}</p> : (
+    response ? (
+        response.map((item, idx) => (
+            <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description }} />
+        ))
+    ) : null
+)}
                 </div>
 
                 <div className="fixed bottom-4 right-4 shadow-md">
