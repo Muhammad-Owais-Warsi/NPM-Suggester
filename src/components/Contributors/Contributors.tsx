@@ -27,7 +27,7 @@ const Contributors: React.FC = () => {
   }, []); // Empty dependency array ensures fetch happens only once on mount
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-white px-4 pt-7">
+    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-slate-950 px-4 pt-7">
       <motion.h3
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,8 @@ const Contributors: React.FC = () => {
               />
               <motion.span
                 className="text-sm"
-                whileHover={{ scale: 1.1, color: "#3182ce" }}
+                style={{ color: "black" }} // Adjust font color here
+                whileHover={{ scale: 1.1 }}
               >
                 {contributor.login}
               </motion.span>

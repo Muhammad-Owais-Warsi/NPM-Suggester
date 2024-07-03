@@ -1,11 +1,18 @@
-// components/About/About.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaInfoCircle } from "react-icons/fa";
 
 const About: React.FC = () => {
+    // Remove scroll bar by applying CSS to the body
+    useEffect(() => {
+        document.body.style.overflow = 'hidden'; // Disable scrolling on mount
+        return () => {
+            document.body.style.overflow = 'auto'; // Re-enable scrolling on unmount
+        };
+    }, []);
+
     return (
-        <div className="min-h-screen bg-gradient-to-r from-green-400 to-green-600 flex flex-col items-center justify-center text-white">
+        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -4,8 +4,16 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact: React.FC = () => {
+    // Remove scroll bar by applying CSS to the body
+    React.useEffect(() => {
+        document.body.style.overflow = 'hidden'; // Disable scrolling on mount
+        return () => {
+            document.body.style.overflow = 'auto'; // Re-enable scrolling on unmount
+        };
+    }, []);
+
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-400 to-purple-600 flex flex-col items-center justify-center text-white">
+        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -34,6 +42,18 @@ const Contact: React.FC = () => {
                 <div className="flex items-center space-x-4">
                     <FaMapMarkerAlt size={30} />
                     <span className="text-lg">123 Developer Lane, Suite 100, Dev City</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <FaEnvelope size={30} />
+                    <span className="text-lg">support@example.com</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <FaPhone size={30} />
+                    <span className="text-lg">+123 789 4560</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <FaMapMarkerAlt size={30} />
+                    <span className="text-lg">456 Tech Avenue, Suite 200, Tech City</span>
                 </div>
             </motion.div>
         </div>
