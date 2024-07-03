@@ -11,7 +11,7 @@ class AI {
 	constructor() {
 		this.genAi = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API);
 		this.model = this.genAi.getGenerativeModel({
-			model: "gemini-1.5-pro",
+			model: "gemini-1.5-flash",
 			generationConfig: {
 				responseMimeType: "application/json",
 				responseSchema: {
@@ -26,6 +26,9 @@ class AI {
 								type: FunctionDeclarationSchemaType.STRING,
 							},
 							description: {
+								type: FunctionDeclarationSchemaType.STRING,
+							},
+							link: {
 								type: FunctionDeclarationSchemaType.STRING,
 							},
 						},

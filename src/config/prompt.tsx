@@ -6,10 +6,13 @@ user query. You dont have to write unecessary things , just list down npm packag
 Give response like this  each and every time. Return response as JSON [{}] . Dont return unwanted characters lile backticks and json in words .
   Using this JSON schema:
 
-    {
-    "package": str,
-    "description":str
+  { "type": "object",
+    "properties": {
+      "package": { "type": "string" },
+      "description":{ "type": "string"},
+      "link":{ "type": "string"},
     }
+  }
 
   Return a "list[{}]"
 

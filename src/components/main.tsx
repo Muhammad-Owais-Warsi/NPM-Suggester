@@ -6,6 +6,7 @@ import { toast } from "sonner"; // Assuming you have a toast library like react-
 interface responseType {
     package: string;
     description: string;
+    link:string;
 }
 
 export default function Main() {
@@ -17,11 +18,11 @@ export default function Main() {
     const generateResponse = async () => {
         try {
             setLoading(true);
-            setError(""); // Clear error state at the start of the function
+            setError(""); 
             if (query) {
                 const result = await ai.generate(query);
                 
-                // Check if result is empty or not a string
+              
                 if (!result || typeof result !== "string") {
                     throw new Error("Empty or unexpected response format.");
                 }
@@ -39,6 +40,7 @@ export default function Main() {
         }
     };
     
+    response && console.log(response)
 
     return (
         <div className="flex justify-center items-start h-screen bg-white">
@@ -70,7 +72,7 @@ export default function Main() {
                 {error ? <p className="text-7xl flex">{error}</p> : (
     response ? (
         response.map((item, idx) => (
-            <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description }} />
+            <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description, link: item.link}} />
         ))
     ) : null
 )}
