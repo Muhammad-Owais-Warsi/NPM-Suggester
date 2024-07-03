@@ -42,58 +42,72 @@ const Main: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen bg-gray-100">
+        <div className="flex justify-center items-start h-screen bg-white">
             <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md"
+                className="text-center p-8 rounded-lg"
             >
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-blue-600">NPM Package Suggester</h1>
-                    <p className="text-gray-600 mt-2">Get quick recommendations for NPM packages.</p>
+                <div className="mb-6">
+                    <p className="text-3xl font-bold text-blue-600">NPM Package Suggester</p>
                 </div>
 
-                <div className="mb-6">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="mb-6"
+                >
                     <input
-                        className="block w-full rounded-md border-gray-300 shadow-sm py-3 px-4 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Enter your query"
+                        className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 px-2"
+                        placeholder="Enter query"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
-                </div>
+                </motion.div>
 
-                <div className="mb-6">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="mb-6"
+                >
                     <button
-                        className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md shadow-md transition duration-300 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
                         onClick={generateResponse}
                         disabled={loading}
                     >
-                        {loading ? <FiLoader className="animate-spin inline-block mr-2" /> : "Generate"}
+                        {loading ? (
+                            <FiLoader className="animate-spin inline-block mr-2 text-white" />
+                        ) : (
+                            "Generate"
+                        )}
                     </button>
-                </div>
+                </motion.div>
 
-                {error && (
-                    <div className="mb-6 text-red-500 text-center">
-                        <p>{error}</p>
-                    </div>
-                )}
-
-                {response && (
-                    <div>
-                        {response.map((item, idx) => (
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                    className="mt-8"
+                >
+                    {error ? (
+                        <p className="text-red-500">{error}</p>
+                    ) : response ? (
+                        response.map((item, idx) => (
                             <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description }} />
-                        ))}
-                    </div>
-                )}
+                        ))
+                    ) : null}
+                </motion.div>
 
-                <div className="mt-8 text-center">
+                <div className="fixed bottom-4 right-4 shadow-md">
                     {/* Placeholder for external link */}
                     <a href="https://www.producthunt.com/posts/npm-suggester?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank">
                         <img
                             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=466189&theme=light"
                             alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt"
-                            className="w-56 mx-auto"
+                            style={{ width: "250px", height: "54px" }}
                         />
                     </a>
                 </div>
