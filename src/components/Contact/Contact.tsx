@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-400 to-purple-600 flex flex-col items-center justify-center text-white">
+        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
