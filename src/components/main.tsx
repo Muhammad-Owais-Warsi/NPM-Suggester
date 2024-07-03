@@ -42,12 +42,12 @@ const Main: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600">
+        <div className="flex justify-center ">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center p-8 rounded-lg bg-white shadow-lg max-w-lg w-full"
+                className="text-center p-8 rounded-lg max-w-lg w-full"
             >
                 <div className="mb-6">
                     <p className="text-3xl font-bold text-blue-600">NPM Package Suggester</p>

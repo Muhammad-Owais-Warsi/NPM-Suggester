@@ -1,7 +1,7 @@
 // components/Contact/Contact.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import { RiGithubFill } from "react-icons/ri";
 
 const Contact: React.FC = () => {
     // Remove scroll bar by applying CSS to the body
@@ -22,40 +22,20 @@ const Contact: React.FC = () => {
             >
                 <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
                 <p className="text-xl mb-8 max-w-prose">
-                    We would love to hear from you. Please reach out to us using any of the methods below.
+                    We would love to hear from you.
                 </p>
             </motion.div>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex flex-col items-center space-y-6"
-            >
-                <div className="flex items-center space-x-4">
-                    <FaEnvelope size={30} />
-                    <span className="text-lg">email@example.com</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <FaPhone size={30} />
-                    <span className="text-lg">+123 456 7890</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <FaMapMarkerAlt size={30} />
-                    <span className="text-lg">123 Developer Lane, Suite 100, Dev City</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <FaEnvelope size={30} />
-                    <span className="text-lg">support@example.com</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <FaPhone size={30} />
-                    <span className="text-lg">+123 789 4560</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <FaMapMarkerAlt size={30} />
-                    <span className="text-lg">456 Tech Avenue, Suite 200, Tech City</span>
-                </div>
-            </motion.div>
+            <motion.a
+                    href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    Contribute on GitHub
+                    <RiGithubFill className="ml-2" size={20} /> {/* GitHub icon */}
+                </motion.a>
         </div>
     );
 };

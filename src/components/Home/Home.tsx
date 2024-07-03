@@ -5,7 +5,7 @@ import { RiGithubFill } from "react-icons/ri"; // Import GitHub icon from react-
 
 const Home: React.FC = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-white px-4 py-7">
+        <div className="h-[35.5rem] bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-white px-4 py-7">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -55,41 +55,18 @@ const Home: React.FC = () => {
                 <h2 className="text-xl md:text-3xl font-bold mb-6">
                     Why Use NPM Package Suggester?
                 </h2>
-                <ul className="text-lg md:text-xl list-disc list-inside mb-8">
+                <ul className="text-lg md:text-xl list-disc list-inside">
                     <li className="mb-2">Optimize your project's dependencies.</li>
                     <li className="mb-2">Get recommendations based on your specific needs.</li>
-                    <li className="mb-2">Improve project performance and maintainability.</li>
                 </ul>
-                <h2 className="text-xl md:text-3xl font-bold mb-6">
-                    How It Works
-                </h2>
-                <p className="text-lg md:text-xl mb-8">
-                    NPM Package Suggester leverages advanced algorithms to analyze your project's structure and dependencies. It then provides you with optimized recommendations to enhance your project's efficiency and maintainability.
-                </p>
-                <p className="text-lg md:text-xl mb-8">
-                    Simply start by entering your project details or linking your repository, and let NPM Package Suggester do the rest. It's designed to integrate seamlessly into your workflow, making it easier than ever to manage NPM packages.
-                </p>
-                <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <Link
-                        to="/main"
-                        className="inline-block px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
-                    >
-                        Start Optimizing
-                    </Link>
-                </motion.div>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-center mb-8 max-w-screen-lg"
+                className="text-center max-w-screen-lg"
             >
-                <p className="text-lg md:text-xl mb-4">
-                    Want to contribute? Visit our GitHub repository.
-                </p>
+
                 <motion.a
                     href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
                     target="_blank"
