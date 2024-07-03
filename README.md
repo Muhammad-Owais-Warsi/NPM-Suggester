@@ -1,6 +1,13 @@
+<div className="fixed bottom-4 right-4 shadow-md">
+    <a href="https://www.producthunt.com/posts/npm-suggester?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank">
+        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=466189&theme=light" alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt" style={{width: "250px", height:"54px"}} />
+    </a>
+</div>
+
 # NPM Suggester
 
 NPM Suggester is a web application designed to help developers find the most relevant npm packages based on their queries.
+
 ## Features
 
 - **User-friendly Interface**: Simple and intuitive UI built with React.
@@ -13,7 +20,7 @@ NPM Suggester is a web application designed to help developers find the most rel
 ### Prerequisites
 
 - Get the Gemini API Key. You can get your key from here https://ai.google.dev/gemini-api/docs/api-key
-- View the ```.env.sample``` file for reference.
+- View the `.env.sample` file for reference.
 
 ### Installation
 
@@ -33,7 +40,9 @@ NPM Suggester is a web application designed to help developers find the most rel
    ```sh
     npm run dev
     ```
+
 ### Don't forget to add Gemini API Key
+
 ### Open your browser and visit `http://localhost:3000` to see the app in action.
 
 ## Usage
@@ -51,8 +60,6 @@ NPM Suggester is a web application designed to help developers find the most rel
 
 Contributions are welcome! Please start and fork the repository and submit a pull request with your changes.
 
-
 ## Contact
 
 For any questions, feedback, or inquiries, please contact us at [mail](mailto:warsimuhammadowais@gmail.com).
-
