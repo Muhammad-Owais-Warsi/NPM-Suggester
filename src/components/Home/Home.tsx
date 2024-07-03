@@ -5,7 +5,7 @@ import { RiGithubFill } from "react-icons/ri"; // Import GitHub icon from react-
 
 const Home: React.FC = () => {
     return (
-        <div className="h-[35.5rem] bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-white px-4 py-7">
+        <div className="min-h-screen overflow-hidden  bg-gradient-to-r from-blue-400 to-blue-600 flex flex-col items-center justify-center text-white px-4 ">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,6 @@ const Home: React.FC = () => {
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="text-center max-w-screen-lg"
             >
-
                 <motion.a
                     href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
                     target="_blank"
