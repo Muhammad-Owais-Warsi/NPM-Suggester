@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Contact: React.FC = () => {
     // Enable scrolling on mount and disable on unmount
@@ -21,20 +21,8 @@ const Contact: React.FC = () => {
             >
                 <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
                 <p className="text-xl mb-8 max-w-prose">
-                    We would love to hear from you. Please reach out to us using any of the methods below or send us a message using the form.
+                    We would love to hear from you. Please reach out to us using the form below.
                 </p>
-                <div className="flex items-center space-x-4 mb-4">
-                    <FaEnvelope size={30} />
-                    <span className="text-lg">email@example.com</span>
-                </div>
-                <div className="flex items-center space-x-4 mb-4">
-                    <FaPhone size={30} />
-                    <span className="text-lg">+123 456 7890</span>
-                </div>
-                <div className="flex items-center space-x-4 mb-8">
-                    <FaMapMarkerAlt size={30} />
-                    <span className="text-lg">123 Developer Lane, Suite 100, Dev City</span>
-                </div>
                 {/* Social Media Icons */}
                 <div className="flex space-x-4">
                     <a

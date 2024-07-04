@@ -13,7 +13,7 @@ const NavBar: React.FC = () => {
                 className="text-white text-2xl font-bold"
             >
                 <motion.span whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    Package Suggester
+                    NPM Suggester
                 </motion.span>
             </motion.h1>
 

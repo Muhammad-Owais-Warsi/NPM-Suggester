@@ -13,7 +13,7 @@ const Home: React.FC = () => {
                 className="text-center mb-8"
             >
                 <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                    Welcome to NPM Package Suggester
+                    Welcome to NPM Suggester
                 </h1>
                 <p className="text-lg md:text-xl mb-8">
                     Get quick recommendations for NPM packages and optimize your projects.
