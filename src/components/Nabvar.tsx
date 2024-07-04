@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { RiGithubFill } from "react-icons/ri"; // Import GitHub icon from react-icons/ri
 
 const NavBar: React.FC = () => {
     return (
@@ -39,21 +40,17 @@ const NavBar: React.FC = () => {
             </ul>
 
             {/* GitHub Link */}
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="flex items-center"
-            >
-                <a
+            <motion.a
                     href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-gray-200 transition-colors duration-300 flex items-center"
+                    className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                 >
                     Contribute on GitHub
-                </a>
-            </motion.div>
+                    <RiGithubFill className="ml-2" size={20} /> {/* GitHub icon */}
+                </motion.a>
         </nav>
     );
 };
