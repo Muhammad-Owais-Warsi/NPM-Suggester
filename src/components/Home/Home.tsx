@@ -24,6 +24,18 @@ const Home: React.FC = () => {
               Get quick recommendations for NPM packages and optimize your
               projects.
             </p>
+
+            <Link
+              to="/main"
+              className="cursor-pointer font-semibold overflow-hidden relative z-100 border border-blue-500 group px-5 py-2 rounded-2xl inline-block"
+            >
+              <span className="relative z-10 text-blue-500 group-hover:text-white text-xl duration-500">
+                Get Started 🚀
+              </span>
+              <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+              <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            </Link>
+
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
