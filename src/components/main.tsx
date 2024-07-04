@@ -42,14 +42,14 @@ const Main: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center ">
+        <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center p-8 rounded-lg max-w-lg w-full"
+                className="w-full max-w-xl bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
             >
-                <div className="mb-6">
+                <div className="mb-6 text-center">
                     <p className="text-3xl font-bold text-blue-600">NPM Package Suggester</p>
                 </div>
 
@@ -71,10 +71,10 @@ const Main: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
-                    className="mb-6"
+                    className="mb-6 text-center"
                 >
                     <button
-                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
+                        className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300 flex justify-center items-center"
                         onClick={generateResponse}
                         disabled={loading}
                     >
@@ -100,18 +100,18 @@ const Main: React.FC = () => {
                         ))
                     ) : null}
                 </motion.div>
-
-                <div className="fixed bottom-4 right-4 shadow-md">
-                    {/* Placeholder for external link */}
-                    <a href="https://www.producthunt.com/posts/npm-suggester?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank">
-                        <img
-                            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=466189&theme=light"
-                            alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt"
-                            style={{ width: "250px", height: "54px" }}
-                        />
-                    </a>
-                </div>
             </motion.div>
+            
+            <div className="absolute bottom-4 right-4">
+                {/* Placeholder for external link */}
+                <a href="https://www.producthunt.com/posts/npm-suggester?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank">
+                    <img
+                        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=466189&theme=light"
+                        alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt"
+                        style={{ width: "250px", height: "54px" }}
+                    />
+                </a>
+            </div>
         </div>
     );
 };
