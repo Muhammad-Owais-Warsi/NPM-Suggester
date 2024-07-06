@@ -12,14 +12,14 @@ const About: React.FC = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white">
+        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white pb-11">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-center"
             >
-                <FaInfoCircle size={50} className="mb-4" />
+                <FaInfoCircle size={50} className="m-0" />
                 <h1 className="text-4xl font-bold mb-6">About Us</h1>
                 <p className="text-xl mb-8 max-w-prose">
                     We are dedicated to helping developers optimize their projects by providing quick recommendations for NPM packages. Our goal is to make your development process smoother and more efficient.
