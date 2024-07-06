@@ -1,12 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { RiGithubFill } from "react-icons/ri"; // Import GitHub icon from react-icons/ri
-import { FaTools, FaLightbulb, FaChartLine } from "react-icons/fa"; // Importing react-icons
+import { FaTools, FaLightbulb, FaChartLine } from "react-icons/fa";
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between text-black bg-white px-4 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-between text-black bg-white dark:bg-gray-900 px-4 py-8">
       {/* Hero Section */}
       <section className="bg-white dark:bg-gray-900">
         <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
@@ -19,12 +18,10 @@ const Home: React.FC = () => {
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">
               NPM Package Suggester
             </h1>
-
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
               Get quick recommendations for NPM packages and optimize your
               projects.
             </p>
-
             <Link
               to="/main"
               className="cursor-pointer font-semibold overflow-hidden relative z-100 border border-blue-500 group px-5 py-2 rounded-2xl inline-block"
@@ -35,7 +32,6 @@ const Home: React.FC = () => {
               <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
               <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
             </Link>
-
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -54,7 +50,6 @@ const Home: React.FC = () => {
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl">Why Choose Us</h2>
           </div>
-
           <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -69,13 +64,12 @@ const Home: React.FC = () => {
                 <h2 className="text-lg font-bold">
                   Optimize Your Dependencies
                 </h2>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   Our tool helps you optimize your project's dependencies,
                   ensuring you use the best packages available.
                 </p>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -87,13 +81,12 @@ const Home: React.FC = () => {
               </span>
               <div>
                 <h2 className="text-lg font-bold">Tailored Recommendations</h2>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   Get recommendations based on your specific needs, making your
                   project development faster and more efficient.
                 </p>
               </div>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -105,7 +98,7 @@ const Home: React.FC = () => {
               </span>
               <div>
                 <h2 className="text-lg font-bold">Boost Productivity</h2>
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                   Enhance your workflow and boost productivity with our
                   intelligent package suggestions.
                 </p>
@@ -128,17 +121,17 @@ const Home: React.FC = () => {
         <p className="text-[#5A72A0] text-lg md:text-xl mb-8">
           Star the repo, contribute to it, and view our awesome contributors.
         </p>
-        <motion.a
-          href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
+        <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Contribute on GitHub
-          <RiGithubFill className="ml-2" size={20} />
-        </motion.a>
+          <Link
+            to="/contributors"
+            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
+          >
+            Contributors
+          </Link>
+        </motion.div>
       </motion.div>
 
       <div className="relative mx-auto max-w-5xl mt-20">
@@ -164,7 +157,7 @@ const Home: React.FC = () => {
                 <h2 className="block w-full pb-2 bg-gradient-to-b from-blue-400 to-blue-600 bg-clip-text font-bold text-transparent text-3xl sm:text-4xl">
                   Enhance Your Project with NPM Package Suggester
                 </h2>
-                <p className="my-4 bg-transparent font-medium leading-relaxed tracking-wide text-gray-600">
+                <p className="my-4 bg-transparent font-medium leading-relaxed tracking-wide text-gray-600 dark:text-gray-400">
                   Get quick recommendations for NPM packages and optimize your
                   projects effortlessly.
                 </p>
@@ -177,29 +170,18 @@ const Home: React.FC = () => {
               >
                 <Link
                   to="/main"
-                  className="bg-blue-600 text-white flex items-center justify-center whitespace-nowrap rounded-md transition-all duration-300 px-8 py-3 text-xs sm:text-sm hover:bg-blue-700"
+                  className="relative z-100 cursor-pointer font-semibold overflow-hidden group px-5 py-2 rounded-2xl inline-block border border-blue-500"
                 >
-                  Get Started
+                  <span className="relative z-10 text-blue-500 group-hover:text-white text-xl duration-500">
+                    Get Started 🚀
+                  </span>
+                  <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+                  <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
                 </Link>
               </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
-
-        {/* Footer */}
-        <motion.footer
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8 mt-20"
-        >
-          <div className="border-t border-gray-200 py-5">
-            <p className="mt-5 text-center text-sm leading-6 text-gray-500">
-              &copy; {new Date().getFullYear()} NPM Package Suggester. All
-              rights reserved.
-            </p>
-          </div>
-        </motion.footer>
       </div>
     </div>
   );
