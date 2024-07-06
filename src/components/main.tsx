@@ -50,7 +50,7 @@ const Main: React.FC = () => {
                 className="w-full max-w-xl bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
             >
                 <div className="mb-6 text-center">
-                    <p className="text-3xl font-bold text-blue-600">NPM Package Suggester</p>
+                    <p className="text-3xl font-bold text-blue-600 dark:text-black-300">NPM Package Suggester</p>
                 </div>
 
                 <motion.div
@@ -60,7 +60,7 @@ const Main: React.FC = () => {
                     className="mb-6"
                 >
                     <input
-                        className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 px-2"
+                        className="block w-full rounded-md border-0 py-2.5 text-gray-900 dark:text-gray-200 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500 px-2"
                         placeholder="Enter query"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
