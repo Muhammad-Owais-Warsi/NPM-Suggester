@@ -22,7 +22,10 @@ const Contributors: React.FC = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             {contributors.map((contributor) => (
-              <div key={contributor.id} className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+              <div
+                key={contributor.id}
+                className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-105"
+              >
                 <div className="flex flex-col items-center pb-10">
                   <img
                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
