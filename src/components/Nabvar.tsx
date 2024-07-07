@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { RiGithubFill, RiMoonFill, RiSunFill } from "react-icons/ri";
+import { RiGithubFill, RiMoonFill, RiSunFill, RiNpmjsLine } from "react-icons/ri";
 
 const NavBar: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,16 +24,19 @@ const NavBar: React.FC = () => {
   return (
     <nav className="bg-blue-600 dark:bg-gray-900 p-4 shadow-md flex justify-between md:flex-row flex-col">
       {/* Animated H1 Tag */}
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-white dark:text-gray-100 text-2xl font-bold mb-4 pt-3 md:mb-0"
+        transition={{ duration: 0.1 }}
+        className="flex items-center text-white dark:text-gray-100 text-2xl font-bold mb-4 pt-3 md:mb-0"
       >
-        <motion.span whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-          NPM Suggester
+        <Link to="/">
+        <motion.span whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="flex items-center space-x-2">
+          <RiNpmjsLine size={32} className="text-red-600" />
+          <span>NPM Suggester</span>
         </motion.span>
-      </motion.h1>
+        </Link>
+      </motion.div>
 
       {/* Navigation Links */}
       <ul className="flex flex-wrap md:flex-row space-x-6 pt-3 mb-4 md:mb-0">
@@ -42,7 +45,7 @@ const NavBar: React.FC = () => {
             key={text}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * index, duration: 0.5 }}
+            transition={{ delay: 0.1 * index, duration: 0.1 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="md:w-1/9"
