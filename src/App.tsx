@@ -8,20 +8,21 @@ import Contact from "./components/Contact/Contact";
 import NavBar from "./components/Nabvar";
 import Home from "./components/Home/Home";
 import Contributors from "./components/Contributors/Contributors";
-import AnimatedCursor from "react-animated-cursor";
+// import AnimatedCursor from "react-animated-cursor";
 
 function App() {
     return (
         <NextUIProvider>
             <Toaster richColors position="top-center" />
-            <AnimatedCursor
+            {/* <AnimatedCursor
                 innerSize={8}
                 outerSize={35}
                 color="220, 90, 80"
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={2}
-            />
+                
+            /> */}
             <Router>
                 <NavBar />
                 <Routes>
