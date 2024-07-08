@@ -2,12 +2,73 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaTools, FaLightbulb, FaChartLine, FaRocket, FaCodeBranch, FaGithub, FaQuoteLeft } from "react-icons/fa";
+import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 
 const Home: React.FC = () => {
+  const [run, setRun] = React.useState(true);
+
+  const steps: Step[] = [
+    {
+      target: ".hero-section",
+      content: "Welcome to the NPM Package Suggester!",
+    },
+    {
+      target: ".why-choose-us",
+      content: "Here you can see why you should choose us.",
+    },
+    {
+      target: ".features",
+      content: "Check out our amazing features.",
+    },
+    {
+      target: ".benefits",
+      content: "Learn about the benefits of using our tool.",
+    },
+    {
+      target: ".testimonials",
+      content: "See what our users have to say.",
+    },
+    {
+      target: ".cta",
+      content: "Join our community by checking out our contributors.",
+    },
+    {
+      target: ".feedback-form",
+      content: "We value your feedback, please let us know your thoughts!",
+    },
+  ];
+
+  const handleJoyrideCallback = (data: CallBackProps) => {
+    const { status } = data;
+    const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
+    if (finishedStatuses.includes(status)) {
+      setRun(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-between text-black bg-white dark:bg-gray-900 px-4 py-8 pt-5">
+      <Joyride
+        steps={steps}
+        run={run}
+        callback={handleJoyrideCallback}
+        continuous
+        showProgress
+        showSkipButton
+        styles={{
+          options: {
+            arrowColor: '#e3e3e3',
+            backgroundColor: '#ffffff',
+            overlayColor: 'rgba(0, 0, 0, 0.5)',
+            primaryColor: '#1a202c',
+            textColor: '#333333',
+            width: 400,
+            zIndex: 1000,
+          },
+        }}
+      />
       {/* Hero Section */}
-      <section className="bg-white dark:bg-gray-900">
+      <section className="hero-section bg-white dark:bg-gray-900">
         <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -44,7 +105,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Why Use Section */}
-      <section className="bg-white dark:bg-gray-900">
+      <section className="why-choose-us bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl">Why Choose Us</h2>
@@ -103,7 +164,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-white dark:bg-gray-900">
+      <section className="features bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl">Our Features</h2>
@@ -135,9 +196,9 @@ const Home: React.FC = () => {
                 <FaCodeBranch className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Collaborative</h2>
+                <h2 className="text-lg font-bold">Up-to-Date Suggestions</h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Collaborate with others and get the best package suggestions.
+                  Get the latest and most relevant NPM package suggestions for your needs.
                 </p>
               </div>
             </motion.div>
@@ -153,66 +214,7 @@ const Home: React.FC = () => {
               <div>
                 <h2 className="text-lg font-bold">Open Source</h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Our project is open source. Contribute and be a part of our community.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="bg-white dark:bg-gray-900">
-        <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Benefits</h2>
-          </div>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="flex items-start gap-4"
-            >
-              <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-                <FaRocket className="h-5 w-5 text-white" />
-              </span>
-              <div>
-                <h2 className="text-lg font-bold">Boost Efficiency</h2>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Save time and effort with our efficient package suggestions.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="flex items-start gap-4"
-            >
-              <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-                <FaCodeBranch className="h-5 w-5 text-white" />
-              </span>
-              <div>
-                <h2 className="text-lg font-bold">Improve Collaboration</h2>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Enhance team collaboration with our integrated features.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex items-start gap-4"
-            >
-              <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-                <FaGithub className="h-5 w-5 text-white" />
-              </span>
-              <div>
-                <h2 className="text-lg font-bold">Join the Community</h2>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Be a part of our open-source community and contribute to the project.
+                  Our tool is open source and community-driven, ensuring continuous improvement.
                 </p>
               </div>
             </motion.div>
@@ -221,7 +223,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-gray-100 dark:bg-gray-800">
+      <section className="testimonials bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl">What Our Users Say</h2>
@@ -231,111 +233,111 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
+              className="flex flex-col items-start gap-4"
             >
-              <div className="flex items-center mb-4">
-                <FaQuoteLeft className="h-6 w-6 text-blue-500" />
-                <h3 className="ml-2 text-lg font-bold text-gray-800 dark:text-gray-200">John Doe</h3>
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                "This tool has significantly improved our development workflow. Highly recommend!"
+              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
+              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
+                "This tool has been a game-changer for my project. Highly recommend!"
               </p>
+              <div className="mt-2">
+                <h3 className="text-lg font-semibold">Jane Doe</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">Software Engineer</span>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
+              className="flex flex-col items-start gap-4"
             >
-              <div className="flex items-center mb-4">
-                <FaQuoteLeft className="h-6 w-6 text-blue-500" />
-                <h3 className="ml-2 text-lg font-bold text-gray-800 dark:text-gray-200">Jane Smith</h3>
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                "The recommendations are spot on and have helped us save a lot of time."
+              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
+              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
+                "Efficient and easy to use. This tool saved me so much time!"
               </p>
+              <div className="mt-2">
+                <h3 className="text-lg font-semibold">John Smith</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">Frontend Developer</span>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
+              className="flex flex-col items-start gap-4"
             >
-              <div className="flex items-center mb-4">
-                <FaQuoteLeft className="h-6 w-6 text-blue-500" />
-                <h3 className="ml-2 text-lg font-bold text-gray-800 dark:text-gray-200">Alex Johnson</h3>
-              </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                "Amazing tool! It has become an essential part of our development process."
+              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
+              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
+                "A must-have tool for any developer looking to optimize their projects."
               </p>
+              <div className="mt-2">
+                <h3 className="text-lg font-semibold">Alice Brown</h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">Full Stack Developer</span>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="w-full py-12 bg-[#96C9F4] text-white text-center rounded-b-3xl mb-16"
-      >
-        <h2 className="text-2xl text-[#304463] md:text-4xl font-bold mb-4">
-          This Project is Open Source
-        </h2>
-        <p className="text-[#5A72A0] text-lg md:text-xl mb-8">
-          Star the repo, contribute to it, and view our awesome contributors.
-        </p>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link
-            to="/contributors"
-            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition duration-300"
-          >
-            Contributors
-          </Link>
-        </motion.div>
-      </motion.div>
+      {/* Call to Action Section */}
+      <section className="cta bg-white dark:bg-gray-900">
+        <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-bold sm:text-4xl">Join Our Community</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Become a part of our growing community and contribute to the project. Check out our contributors!
+            </p>
+            <Link
+              to="/contributors"
+              className="cursor-pointer font-semibold overflow-hidden relative z-100 border border-blue-500 group px-5 py-2 rounded-2xl inline-block mt-4"
+            >
+              <span className="relative z-10 text-blue-500 group-hover:text-white text-xl duration-500">
+                View Contributors
+              </span>
+              <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500"></span>
+              <span className="absolute w-full h-full bg-blue-500 opacity-0 group-hover:opacity-100 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500"></span>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* Feedback Form */}
-      <section className=" bg-sky-200 dark:bg-gray-900">
+      {/* Feedback Form Section */}
+      <section className="feedback-form bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
             <h2 className="text-3xl font-bold sm:text-4xl">We Value Your Feedback</h2>
-          </div>
-          <div className="mt-8">
-            <form className="space-y-4">
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Your feedback helps us improve our tool. Please let us know your thoughts!
+            </p>
+            <form className="mt-8 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Name</label>
                 <input
                   type="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-800 dark:border-gray-600"
-                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Email</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Email</label>
                 <input
                   type="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-800 dark:border-gray-600"
-                  required
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Message</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Feedback</label>
                 <textarea
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm dark:bg-gray-800 dark:border-gray-600"
                   rows={4}
-                  required
-                />
+                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
+                ></textarea>
               </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <div>
                 <button
                   type="submit"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300"
+                  className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Submit Feedback
                 </button>
-              </motion.div>
+              </div>
             </form>
           </div>
         </div>
