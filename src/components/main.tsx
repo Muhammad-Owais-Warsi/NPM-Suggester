@@ -73,7 +73,8 @@ const Main: React.FC = () => {
                     transition={{ delay: 0.4, duration: 0.5 }}
                     className="mb-6 text-center"
                 >
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
                         className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300 flex justify-center items-center"
                         onClick={generateResponse}
                         disabled={loading}
@@ -83,7 +84,7 @@ const Main: React.FC = () => {
                         ) : (
                             "Generate"
                         )}
-                    </button>
+                    </motion.button>
                 </motion.div>
 
                 <motion.div
@@ -93,17 +94,35 @@ const Main: React.FC = () => {
                     className="mt-8 text-left"
                 >
                     {error ? (
-                        <p className="text-red-500">{error}</p>
+                        <motion.p
+                            initial={{ x: -10 }}
+                            animate={{ x: 0 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                            className="text-red-500"
+                        >
+                            {error}
+                        </motion.p>
                     ) : response ? (
                         response.map((item, idx) => (
-                            <ResponseBlock key={idx} prop={{ no: idx + 1, package: item.package, description: item.description }} />
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                            >
+                                <ResponseBlock prop={{ no: idx + 1, package: item.package, description: item.description }} />
+                            </motion.div>
                         ))
                     ) : null}
                 </motion.div>
             </motion.div>
             
-            <div className="absolute bottom-4 right-4">
-                {/* Placeholder for external link */}
+            <motion.div
+                className="absolute bottom-4 right-4"
+                initial={{ y: 10 }}
+                animate={{ y: 0 }}
+                transition={{ yoyo: Infinity, duration: 1 }}
+            >
                 <a href="https://www.producthunt.com/posts/npm-suggester?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank">
                     <img
                         src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=466189&theme=light"
@@ -111,7 +130,7 @@ const Main: React.FC = () => {
                         style={{ width: "250px", height: "54px" }}
                     />
                 </a>
-            </div>
+            </motion.div>
         </div>
     );
 };
