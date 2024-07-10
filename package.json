@@ -24,7 +24,7 @@
     "react-router-dom": "^6.24.1",
     "reactour": "^1.19.4",
     "sonner": "^1.5.0",
-    "styled-components": "^6.1.11"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

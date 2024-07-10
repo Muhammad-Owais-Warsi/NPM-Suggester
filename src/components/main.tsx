@@ -8,6 +8,7 @@ import ResponseBlock from "./response";
 interface responseType {
     package: string;
     description: string;
+    link: string;
 }
 
 const Main: React.FC = () => {
@@ -40,7 +41,7 @@ const Main: React.FC = () => {
             setLoading(false);
         }
     };
-
+    console.log(response)
     return (
         <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8">
             <motion.div
@@ -110,7 +111,7 @@ const Main: React.FC = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                             >
-                                <ResponseBlock prop={{ no: idx + 1, package: item.package, description: item.description }} />
+                                <ResponseBlock prop={{ no: idx + 1, package: item.package, description: item.description, link: item.link }} />
                             </motion.div>
                         ))
                     ) : null}
