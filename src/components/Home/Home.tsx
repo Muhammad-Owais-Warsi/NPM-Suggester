@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 
   const testimonials = [
     {
-      name: "Mehak Matoo",
+      name: "Mehak Mattoo",
       feedback: "Can generate package names from a single word! Really useful.",
       role: "Contributor",
       social: "https://github.com/Mehak-Mattoo"
