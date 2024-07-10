@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaCopy } from "react-icons/fa";
 
 interface PropType {
@@ -14,7 +14,7 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
     const [showCopyMessage, setShowCopyMessage] = useState<boolean>(false);
 
     const handleCopy = () => {
-        const textToCopy = prop.description;
+        const textToCopy = prop.link;
         navigator.clipboard.writeText(textToCopy)
             .then(() => {
                 setShowCopyMessage(true);
@@ -22,7 +22,7 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
                     setShowCopyMessage(false);
                 }, 3000);
             })
-            .catch((error) => {
+            .catch(() => {
                 setShowCopyMessage(true);
                 setTimeout(() => {
                     setShowCopyMessage(false);
