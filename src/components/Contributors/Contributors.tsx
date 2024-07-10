@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { FaLink } from "react-icons/fa";
 
+interface Contributor {
+  id: number;
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
+}
+
 const Contributors: React.FC = () => {
-  const [contributors, setContributors] = useState<any[]>([]);
+
+  const [contributors, setContributors] = useState<Contributor[]>([]);
+
   const [e, setE] = useState<string | null>(null);
 
   useEffect(() => {
@@ -24,6 +34,7 @@ const Contributors: React.FC = () => {
 
   
   const orderedTopContributors = [contributors[1], contributors[0], contributors[2]].filter(Boolean);
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-between bg-white dark:bg-gray-900 px-4 py-8">
