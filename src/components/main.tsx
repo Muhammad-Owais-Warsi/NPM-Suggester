@@ -20,11 +20,11 @@ const Main: React.FC = () => {
     const generateResponse = async () => {
         try {
             setLoading(true);
-            setError(""); // Clear error state at the start of the function
+            setError("");
             if (query) {
                 const result = await ai.generate(query);
 
-                // Check if result is empty or not a string
+               
                 if (!result || typeof result !== "string") {
                     throw new Error("Empty or unexpected response format.");
                 }
