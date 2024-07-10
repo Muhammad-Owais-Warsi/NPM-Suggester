@@ -1,7 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaTools, FaLightbulb, FaChartLine, FaRocket, FaCodeBranch, FaGithub, FaQuoteLeft } from "react-icons/fa";
+import {
+  FaTools,
+  FaLightbulb,
+  FaChartLine,
+  FaRocket,
+  FaCodeBranch,
+  FaGithub,
+  FaQuoteLeft,
+} from "react-icons/fa";
 import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 
 const Home: React.FC = () => {
@@ -57,11 +65,11 @@ const Home: React.FC = () => {
         showSkipButton
         styles={{
           options: {
-            arrowColor: '#e3e3e3',
-            backgroundColor: '#ffffff',
-            overlayColor: 'rgba(0, 0, 0, 0.5)',
-            primaryColor: '#1a202c',
-            textColor: '#333333',
+            arrowColor: "#e3e3e3",
+            backgroundColor: "#ffffff",
+            overlayColor: "rgba(0, 0, 0, 0.5)",
+            primaryColor: "#1a202c",
+            textColor: "#333333",
             width: 400,
             zIndex: 1000,
           },
@@ -80,7 +88,8 @@ const Home: React.FC = () => {
               NPM Package Suggester
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-              Get quick recommendations for NPM packages and optimize your projects.
+              Get quick recommendations for NPM packages and optimize your
+              projects.
             </p>
             <Link
               to="/main"
@@ -108,7 +117,9 @@ const Home: React.FC = () => {
       <section className="why-choose-us bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Why Choose Us</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl dark:text-cyan-400">
+              Why Choose Us
+            </h2>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
             <motion.div
@@ -121,9 +132,12 @@ const Home: React.FC = () => {
                 <FaTools className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Optimize Your Dependencies</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Optimize Your Dependencies
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Our tool helps you optimize your project's dependencies, ensuring you use the best packages available.
+                  Our tool helps you optimize your project's dependencies,
+                  ensuring you use the best packages available.
                 </p>
               </div>
             </motion.div>
@@ -137,9 +151,12 @@ const Home: React.FC = () => {
                 <FaLightbulb className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Tailored Recommendations</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Tailored Recommendations
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Get recommendations based on your specific needs, making your project development faster and more efficient.
+                  Get recommendations based on your specific needs, making your
+                  project development faster and more efficient.
                 </p>
               </div>
             </motion.div>
@@ -153,9 +170,12 @@ const Home: React.FC = () => {
                 <FaChartLine className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Boost Productivity</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Boost Productivity
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Enhance your workflow and boost productivity with our intelligent package suggestions.
+                  Enhance your workflow and boost productivity with our
+                  intelligent package suggestions.
                 </p>
               </div>
             </motion.div>
@@ -167,7 +187,9 @@ const Home: React.FC = () => {
       <section className="features bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Our Features</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl  dark:text-cyan-400">
+              Our Features
+            </h2>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
             <motion.div
@@ -180,9 +202,12 @@ const Home: React.FC = () => {
                 <FaRocket className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Fast & Reliable</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Fast & Reliable
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Experience fast and reliable recommendations for your projects.
+                  Experience fast and reliable recommendations for your
+                  projects.
                 </p>
               </div>
             </motion.div>
@@ -196,9 +221,12 @@ const Home: React.FC = () => {
                 <FaCodeBranch className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Up-to-Date Suggestions</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Up-to-Date Suggestions
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Get the latest and most relevant NPM package suggestions for your needs.
+                  Get the latest and most relevant NPM package suggestions for
+                  your needs.
                 </p>
               </div>
             </motion.div>
@@ -212,9 +240,12 @@ const Home: React.FC = () => {
                 <FaGithub className="h-5 w-5 text-white" />
               </span>
               <div>
-                <h2 className="text-lg font-bold">Open Source</h2>
+                <h2 className="text-lg font-bold dark: text-blue-500">
+                  Open Source
+                </h2>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Our tool is open source and community-driven, ensuring continuous improvement.
+                  Our tool is open source and community-driven, ensuring
+                  continuous improvement.
                 </p>
               </div>
             </motion.div>
@@ -226,7 +257,9 @@ const Home: React.FC = () => {
       <section className="testimonials bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">What Our Users Say</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl  dark:text-cyan-400">
+              What Our Users Say
+            </h2>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
             <motion.div
@@ -237,11 +270,16 @@ const Home: React.FC = () => {
             >
               <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
               <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                "This tool has been a game-changer for my project. Highly recommend!"
+                "This tool has been a game-changer for my project. Highly
+                recommend!"
               </p>
               <div className="mt-2">
-                <h3 className="text-lg font-semibold">Jane Doe</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">Software Engineer</span>
+                <h3 className="text-lg font-semibold dark:text-white">
+                  Jane Doe
+                </h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Software Engineer
+                </span>
               </div>
             </motion.div>
             <motion.div
@@ -255,8 +293,12 @@ const Home: React.FC = () => {
                 "Efficient and easy to use. This tool saved me so much time!"
               </p>
               <div className="mt-2">
-                <h3 className="text-lg font-semibold">John Smith</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">Frontend Developer</span>
+                <h3 className="text-lg font-semibold  dark:text-white">
+                  John Smith
+                </h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Frontend Developer
+                </span>
               </div>
             </motion.div>
             <motion.div
@@ -267,11 +309,16 @@ const Home: React.FC = () => {
             >
               <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
               <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                "A must-have tool for any developer looking to optimize their projects."
+                "A must-have tool for any developer looking to optimize their
+                projects."
               </p>
               <div className="mt-2">
-                <h3 className="text-lg font-semibold">Alice Brown</h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">Full Stack Developer</span>
+                <h3 className="text-lg font-semibold  dark:text-white">
+                  Alice Brown
+                </h3>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Full Stack Developer
+                </span>
               </div>
             </motion.div>
           </div>
@@ -282,9 +329,12 @@ const Home: React.FC = () => {
       <section className="cta bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Join Our Community</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl  dark:text-cyan-400">
+              Join Our Community
+            </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Become a part of our growing community and contribute to the project. Check out our contributors!
+              Become a part of our growing community and contribute to the
+              project. Check out our contributors!
             </p>
             <Link
               to="/contributors"
@@ -304,27 +354,36 @@ const Home: React.FC = () => {
       <section className="feedback-form bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">We Value Your Feedback</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl  dark:text-cyan-400">
+              We Value Your Feedback
+            </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Your feedback helps us improve our tool. Please let us know your thoughts!
+              Your feedback helps us improve our tool. Please let us know your
+              thoughts!
             </p>
             <form className="mt-8 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Email</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Your Email
+                </label>
                 <input
                   type="email"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Feedback</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Your Feedback
+                </label>
                 <textarea
                   rows={4}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
