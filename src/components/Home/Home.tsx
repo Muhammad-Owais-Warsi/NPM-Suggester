@@ -46,6 +46,16 @@ const Home: React.FC = () => {
     },
   ];
 
+  const testimonials = [
+    {
+      name: "Mehak Matoo",
+      feedback: "Can generate package names from a single word! Really useful.",
+      role: "Contributor",
+      social: "https://github.com/Mehak-Mattoo"
+
+    }
+  ]
+
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { status } = data;
     const finishedStatuses: string[] = [STATUS.FINISHED, STATUS.SKIPPED];
@@ -261,65 +271,34 @@ const Home: React.FC = () => {
               What Our Users Say
             </h2>
           </div>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3  justify-center items-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
               className="flex flex-col items-start gap-4"
             >
-              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
-              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                "This tool has been a game-changer for my project. Highly
-                recommend!"
-              </p>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold dark:text-white">
-                  Jane Doe
-                </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Software Engineer
-                </span>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="flex flex-col items-start gap-4"
-            >
-              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
-              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                "Efficient and easy to use. This tool saved me so much time!"
-              </p>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold  dark:text-white">
-                  John Smith
-                </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Frontend Developer
-                </span>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col items-start gap-4"
-            >
-              <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
-              <p className="text-lg font-light text-gray-600 dark:text-gray-400">
-                "A must-have tool for any developer looking to optimize their
-                projects."
-              </p>
-              <div className="mt-2">
-                <h3 className="text-lg font-semibold  dark:text-white">
-                  Alice Brown
-                </h3>
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Full Stack Developer
-                </span>
-              </div>
+
+              {
+                testimonials.map((testimonial, index) => (
+                  <div key={index} >
+                    <FaQuoteLeft className="text-4xl text-gray-500 dark:text-gray-400" />
+                    <p className="text-lg font-light text-gray-600 dark:text-gray-400 my-4">
+                      {testimonial.feedback}
+                    </p>
+                    <div className="mt-2">
+                      <a href={testimonial.social}>  <h3 className="text-lg font-semibold underline  dark:text-white">
+                        {testimonial.name}
+                      </h3></a>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {testimonial.role}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              }
+
+
             </motion.div>
           </div>
         </div>
