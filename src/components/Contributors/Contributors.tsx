@@ -3,7 +3,7 @@ import { FaLink } from "react-icons/fa";
 
 const Contributors: React.FC = () => {
   const [contributors, setContributors] = useState<any[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [e, setE] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(
@@ -18,11 +18,11 @@ const Contributors: React.FC = () => {
       .then((data) => setContributors(data))
       .catch((error) => {
         console.error("Error fetching contributors:", error);
-        setError("Failed to load contributors.");
+        setE("Failed to load contributors.");
       });
   }, []);
 
-  // Arrange top 3 contributors in a specific order
+  
   const orderedTopContributors = [contributors[1], contributors[0], contributors[2]].filter(Boolean);
 
   return (
@@ -35,9 +35,9 @@ const Contributors: React.FC = () => {
           <p className="mb-8 lg:mb-16 font-light text-gray-500 dark:text-gray-400">
             Meet the amazing people who have contributed to our project.
           </p>
-          {error && (
+          {e && (
             <div className="mb-4 text-red-600 dark:text-red-400">
-              {error}
+              {e}
             </div>
           )}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
