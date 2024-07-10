@@ -4,15 +4,19 @@ import { FaInfoCircle } from "react-icons/fa";
 
 const About: React.FC = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-400 to-violet-600 flex flex-col items-center justify-center text-white py-8">
+        <div className="min-h-screen bg-white flex flex-col items-center justify-center text-black py-8">
             <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center max-w-3xl px-4"
+                className="text-left max-w-3xl px-4"
             >
-                <FaInfoCircle size={50} className="mx-auto mb-4" />
-                <h1 className="text-4xl font-bold mb-6">About Us</h1>
+                <div className="flex items-center justify-center mb-6">
+                    <FaInfoCircle size={50} className="mr-4 text-blue-500" />
+                    <h1 className="text-4xl font-bold text-blue-500">
+                        About Us
+                    </h1>
+                </div>
                 <p className="text-lg mb-8">
                     We are dedicated to helping developers optimize their projects by providing quick recommendations for NPM packages. Our goal is to make your development process smoother and more efficient.
                 </p>
