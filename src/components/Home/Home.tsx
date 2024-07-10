@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -11,9 +11,11 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
+import { toast } from "sonner";
 
 const Home: React.FC = () => {
   const [run, setRun] = React.useState(true);
+
 
   const steps: Step[] = [
     {
@@ -63,6 +65,7 @@ const Home: React.FC = () => {
       setRun(false);
     }
   };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-between text-black bg-white dark:bg-gray-900 px-4 py-8 pt-5">
@@ -271,7 +274,7 @@ const Home: React.FC = () => {
               What Our Users Say
             </h2>
           </div>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3  justify-center items-center">
+          <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3 ">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -329,57 +332,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Feedback Form Section */}
-      <section className="feedback-form bg-white dark:bg-gray-900">
-        <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-bold sm:text-4xl  dark:text-cyan-400">
-              We Value Your Feedback
-            </h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Your feedback helps us improve our tool. Please let us know your
-              thoughts!
-            </p>
-            <form className="mt-8 space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Your Feedback
-                </label>
-                <textarea
-                  rows={4}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600"
-                ></textarea>
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Submit Feedback
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+
+
     </div>
   );
 };

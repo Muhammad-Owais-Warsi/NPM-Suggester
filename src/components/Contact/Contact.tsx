@@ -56,40 +56,7 @@ const Contact: React.FC = () => {
           </a>
         </div>
       </motion.div>
-      {/* Contact Form */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-        className="text-left md:w-1/2 px-8 py-16 md:py-0 ml-11"
-      >
-        <h2 className="text-xl md:text-3xl font-bold mb-6 ">
-          Send Us a Message
-        </h2>
-        <form className="flex flex-col items-center md:items-start space-y-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="px-4 py-2 w-full md:w-96 rounded-md bg-gray-200 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className="px-4 py-2 w-full md:w-96 rounded-md bg-gray-200 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <textarea
-            placeholder="Your Message"
-            rows={4}
-            className="px-4 py-2 w-full md:w-96 rounded-md bg-gray-200 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          ></textarea>
-          <button
-            type="submit"
-            className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-md transition duration-300 transform hover:scale-105 hover:bg-gray-800"
-          >
-            Send Message
-          </button>
-        </form>
-      </motion.div>
+
     </div>
   );
 };
