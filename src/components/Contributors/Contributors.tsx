@@ -31,20 +31,8 @@ const Contributors: React.FC = () => {
       });
   }, []);
 
-
-  if (contributors.length === 0) {
-    return <div>Loading...</div>; // or any loading indicator
-  }
-
-  // Slice the top 3 contributors
-  const topContributors = contributors.slice(0, 3);
-
-  // Arrange top contributors in specified order
-  const orderedTopContributors = [
-    topContributors[1], // index 1 (2nd contributor)
-    topContributors[0], // index 0 (1st contributor)
-    topContributors[2], // index 2 (3rd contributor)
-  ];
+  // Arrange top 3 contributors in a specific order
+  const orderedTopContributors = [contributors[1], contributors[0], contributors[2]].filter(Boolean);
 
 
   return (
