@@ -22,11 +22,8 @@ const Contributors: React.FC = () => {
       });
   }, []);
 
-  // Slice the top 3 contributors and arrange them in a specific order
-  const orderedTopContributors = contributors.slice(0, 3).map((contributor, index) => {
-    const order = [1, 0, 2];
-    return contributors[order[index]];
-  });
+  // Arrange top 3 contributors in a specific order
+  const orderedTopContributors = [contributors[1], contributors[0], contributors[2]].filter(Boolean);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-between bg-white dark:bg-gray-900 px-4 py-8">
