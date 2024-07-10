@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 
+interface Contributor {
+  id: number;
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  contributions: number;
+}
+
 const Contributors: React.FC = () => {
-  const [contributors, setContributors] = useState<any[]>([]);
+  const [contributors, setContributors] = useState<Contributor[]>([]);
 
   useEffect(() => {
     fetch(
@@ -11,6 +19,10 @@ const Contributors: React.FC = () => {
       .then((data) => setContributors(data))
       .catch((error) => console.error("Error fetching contributors:", error));
   }, []);
+
+  if (contributors.length === 0) {
+    return <div>Loading...</div>; // or any loading indicator
+  }
 
   // Slice the top 3 contributors
   const topContributors = contributors.slice(0, 3);
