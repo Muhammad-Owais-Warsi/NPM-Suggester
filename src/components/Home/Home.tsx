@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -11,7 +11,7 @@ import {
   FaQuoteLeft,
 } from "react-icons/fa";
 import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
-import { toast } from "sonner";
+
 
 const Home: React.FC = () => {
   const [run, setRun] = React.useState(true);
