@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -16,8 +16,29 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+} */
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the entire scrollbar */
 }
 
+/* Style the track (progress bar) */
+::-webkit-scrollbar-track {
+  background: #dcf5f7; /* Background color of the track */
+}
+
+/* Style the handle (scroll thumb) */
+::-webkit-scrollbar-thumb {
+  background: rgb(102, 192, 245); /* Background color of the handle */
+  border-radius: 16px; /* Rounded corners of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(65, 161, 218); /* Background color when hovering */
+}
+/* 
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,4 +60,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
