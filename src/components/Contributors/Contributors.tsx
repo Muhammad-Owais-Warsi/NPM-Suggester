@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { FaLink } from "react-icons/fa";
 
 const Contributors: React.FC = () => {
   const [contributors, setContributors] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(
       "https://api.github.com/repos/Muhammad-Owais-Warsi/NPM-Suggester/contributors"
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => setContributors(data))
-      .catch((error) => console.error("Error fetching contributors:", error));
+      .catch((error) => {
+        console.error("Error fetching contributors:", error);
+        setError("Failed to load contributors.");
+      });
   }, []);
 
-  // Slice the top 3 contributors
-  const topContributors = contributors.slice(0, 3);
-
-  // Arrange top contributors in specified order
-  const orderedTopContributors = [
-    topContributors[1], // index 1 (2nd contributor)
-    topContributors[0], // index 0 (1st contributor)
-    topContributors[2], // index 2 (3rd contributor)
-  ];
+  // Slice the top 3 contributors and arrange them in a specific order
+  const orderedTopContributors = contributors.slice(0, 3).map((contributor, index) => {
+    const order = [1, 0, 2];
+    return contributors[order[index]];
+  });
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between text-black bg-white dark:bg-gray-900 px-4 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-between bg-white dark:bg-gray-900 px-4 py-8">
       <section className="bg-white dark:bg-gray-900">
         <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
           <h2 className="mb-4 text-3xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
@@ -32,6 +38,11 @@ const Contributors: React.FC = () => {
           <p className="mb-8 lg:mb-16 font-light text-gray-500 dark:text-gray-400">
             Meet the amazing people who have contributed to our project.
           </p>
+          {error && (
+            <div className="mb-4 text-red-600 dark:text-red-400">
+              {error}
+            </div>
+          )}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {orderedTopContributors.map((contributor, index) => (
               <div
@@ -45,22 +56,27 @@ const Contributors: React.FC = () => {
                       : index === 1
                       ? "h-32 w-32"
                       : "h-20 w-20"
-                  } items-center justify-center rounded-full bg-white text-${
+                  } items-center justify-center rounded-full bg-white dark:bg-gray-800 text-${
                     index === 0 ? "5xl" : index === 1 ? "4xl" : "3xl"
                   } font-bold text-black shadow-lg`}
                   src={contributor.avatar_url}
                   alt={contributor.login}
                 />
                 <div className="text-center">
-                  <div className="flex">
+                  <div className="flex items-center justify-center">
                     <h3 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                       {contributor.login}
                     </h3>
-                    <a href={contributor.html_url}>
-                      <img src="link.svg" alt="link" className="w-7" />
+                    <a
+                      href={contributor.html_url}
+                      className="ml-2 hover:text-blue-600 dark:hover:text-blue-400"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLink className="w-5 h-5" />
                     </a>
                   </div>
-                  <p className="text-gray-500">
+                  <p className="text-gray-500 dark:text-gray-400">
                     Contributions: {contributor.contributions}
                   </p>
                 </div>
@@ -79,12 +95,17 @@ const Contributors: React.FC = () => {
                     src={contributor.avatar_url}
                     alt={contributor.login}
                   />
-                  <div className="flex">
+                  <div className="flex items-center justify-center">
                     <h3 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                       {contributor.login}
                     </h3>
-                    <a href={contributor.html_url}>
-                      <img src="link.svg" alt="link" className="w-7" />
+                    <a
+                      href={contributor.html_url}
+                      className="ml-2 hover:text-blue-600 dark:hover:text-blue-400"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLink className="w-5 h-5" />
                     </a>
                   </div>
                   <span className="text-sm text-gray-500 dark:text-gray-400">
