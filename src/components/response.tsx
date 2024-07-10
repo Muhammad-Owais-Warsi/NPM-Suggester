@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaCopy } from "react-icons/fa";
 
 interface PropType {
@@ -6,24 +6,32 @@ interface PropType {
         no: number;
         package: string;
         description: string;
-        link: string; 
+        link: string;
     };
 }
 
 const ResponseBlock: React.FC<PropType> = ({ prop }) => {
+    const [showCopyMessage, setShowCopyMessage] = useState<boolean>(false);
+
     const handleCopy = () => {
-        const textToCopy = `Package: ${prop.package}\nDescription: ${prop.description}\nLink: ${prop.link}`;
+        const textToCopy = prop.description;
         navigator.clipboard.writeText(textToCopy)
             .then(() => {
-                alert("Copied to clipboard!");
+                setShowCopyMessage(true);
+                setTimeout(() => {
+                    setShowCopyMessage(false);
+                }, 3000);
             })
             .catch((error) => {
-                alert("Failed to copy: " + error);
+                setShowCopyMessage(true);
+                setTimeout(() => {
+                    setShowCopyMessage(false);
+                }, 3000);
             });
     };
 
     return (
-        <div className="flex flex-col justify-center align-middle p-4 mb-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <div className="relative flex flex-col justify-center align-middle p-4 mb-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
             <div className="flex flex-col w-full">
                 <div className="flex items-center mb-2">
                     <p className="text-lg font-bold text-blue-600">{prop.no}.</p>
@@ -47,6 +55,11 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
                     <p className="mb-2 text-gray-700 dark:text-gray-300">{prop.description}</p>
                 </div>
             </div>
+            {showCopyMessage && (
+                <div className="absolute bottom-4 right-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow-md transition-opacity duration-300 ease-in-out">
+                    Copied to clipboard!
+                </div>
+            )}
         </div>
     );
 };
