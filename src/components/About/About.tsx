@@ -13,7 +13,7 @@ const About: React.FC = () => {
       >
         <div className="flex items-center justify-center mb-6">
           <FaInfoCircle size={50} className="mr-4 text-blue-500" />
-          <h1 className="text-4xl font-bold text-blue-500  dark:text-cyan-400">
+          <h1 className="text-4xl font-bold text-blue-500 text-center dark:text-cyan-400">
             About Us
           </h1>
         </div>
