@@ -56,7 +56,6 @@ const Contact: React.FC = () => {
           </a>
         </div>
       </motion.div>
-
     </div>
   );
 };
