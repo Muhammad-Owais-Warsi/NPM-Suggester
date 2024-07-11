@@ -69,6 +69,11 @@ const Main: React.FC = () => {
         setShowHistory(!showHistory);
     };
 
+    const handleHistoryItemClick = (item: string) => {
+        setQuery(item);
+        setShowHistory(false); // Optionally hide history after clicking an item
+    };
+
     return (
         <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8">
             <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl">
@@ -149,7 +154,7 @@ const Main: React.FC = () => {
                 </motion.div>
 
                 {/* History Section */}
-                <HistorySection searchHistory={searchHistory} showHistory={showHistory} toggleHistory={toggleHistory} />
+                <HistorySection searchHistory={searchHistory} showHistory={showHistory} toggleHistory={toggleHistory} onHistoryItemClick={handleHistoryItemClick} />
             </div>
 
             <motion.div
