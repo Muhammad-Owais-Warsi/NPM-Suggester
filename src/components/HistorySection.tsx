@@ -6,9 +6,10 @@ interface HistorySectionProps {
     searchHistory: string[];
     showHistory: boolean;
     toggleHistory: () => void;
+    onHistoryItemClick: (item: string) => void; // New prop
 }
 
-const HistorySection: React.FC<HistorySectionProps> = ({ searchHistory, showHistory, toggleHistory }) => {
+const HistorySection: React.FC<HistorySectionProps> = ({ searchHistory, showHistory, toggleHistory, onHistoryItemClick }) => {
     return (
         <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -36,7 +37,13 @@ const HistorySection: React.FC<HistorySectionProps> = ({ searchHistory, showHist
                 >
                     <ul className="list-disc list-inside text-gray-900 dark:text-gray-200">
                         {searchHistory.map((item, idx) => (
-                            <li key={idx} className="mb-2">{item}</li>
+                            <li
+                                key={idx}
+                                className="mb-2 cursor-pointer hover:text-blue-500"
+                                onClick={() => onHistoryItemClick(item)} // Add click handler
+                            >
+                                {item}
+                            </li>
                         ))}
                     </ul>
                 </motion.div>
