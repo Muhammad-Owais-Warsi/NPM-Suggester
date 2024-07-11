@@ -78,9 +78,14 @@ const Main: React.FC = () => {
     setShowHistory(false); // Optionally hide history after clicking an item
   };
 
+  const handleDeleteHistoryItem = (index: number) => {
+    const updatedHistory = searchHistory.filter((_, idx) => idx !== index);
+    setSearchHistory(updatedHistory);
+  };
+
   return (
-    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 dark:from-gray-800 dark:to-gray-900 px-4 py-4 ">
-      <h4 className=" text-black dark:text-gray-400 text-sm md:text-lg text-center mb-5">
+    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 dark:from-gray-800 dark:to-gray-900 px-4 py-4">
+      <h4 className="text-black dark:text-gray-400 text-sm md:text-lg text-center mb-5">
         In the vast ecosystem of Node Package Manager, finding the right package
         for your project can be overwhelming. We are here to simplify your
         journey.
@@ -127,7 +132,7 @@ const Main: React.FC = () => {
               disabled={loading}
             >
               {loading ? (
-                <FiLoader className="animate-spin inline-block mr-2 text-white " />
+                <FiLoader className="animate-spin inline-block mr-2 text-white" />
               ) : (
                 "Generate"
               )}
@@ -177,11 +182,12 @@ const Main: React.FC = () => {
           showHistory={showHistory}
           toggleHistory={toggleHistory}
           onHistoryItemClick={handleHistoryItemClick}
+          handleDeleteHistoryItem={handleDeleteHistoryItem} // Pass delete handler
         />
       </div>
 
       <motion.div
-        className="absolute bottom-4 right-4 "
+        className="absolute bottom-4 right-4"
         initial={{ y: 10 }}
         animate={{ y: 0 }}
         transition={{ yoyo: Infinity, duration: 1 }}
