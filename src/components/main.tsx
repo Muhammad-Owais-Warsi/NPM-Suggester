@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios"; // Import Axios for making HTTP requests
 import { ai } from "../config/ai";
 import { motion } from "framer-motion";
 import { toast } from "sonner"; // Placeholder for toast library
@@ -7,7 +8,7 @@ import ResponseBlock from "./response";
 import HistorySection from "./HistorySection";
 import AutoSuggestion from "./AutoSuggestion"; // Import the new component
 
-interface responseType {
+interface PackageType {
   package: string;
   description: string;
   link: string;
@@ -15,7 +16,7 @@ interface responseType {
 
 const Main: React.FC = () => {
   const [query, setQuery] = useState<string>("");
-  const [response, setResponse] = useState<responseType[] | undefined>(undefined);
+  const [response, setResponse] = useState<PackageType[] | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
@@ -44,7 +45,7 @@ const Main: React.FC = () => {
           throw new Error("Empty or unexpected response format.");
         }
 
-        const parsedResult = JSON.parse(result) as responseType[];
+        const parsedResult = JSON.parse(result) as PackageType[];
         setResponse(parsedResult);
 
         const updatedHistory = [query, ...searchHistory].slice(0, 5);
@@ -83,67 +84,19 @@ const Main: React.FC = () => {
     localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
   };
 
-  const handleInputChange = (value: string) => {
+  const handleInputChange = async (value: string) => {
     setQuery(value);
     if (value.trim() !== "") {
-      // Example: Replace with actual suggestion logic (e.g., from backend or static list)
-      const filteredSuggestions = [
-        "react",
-        "angular",
-        "vue",
-        "svelte",
-        "nextjs",
-        "express",
-        "nestjs",
-        "graphql",
-        "apollo-client",
-        "redux",
-        "mobx",
-        "jest",
-        "mocha",
-        "cypress",
-        "storybook",
-        "tailwindcss",
-        "bootstrap",
-        "sass",
-        "less",
-        "styled-components",
-        "formik",
-        "yup",
-        "axios",
-        "node-fetch",
-        "jsonwebtoken",
-        "bcrypt",
-        "typeorm",
-        "mongoose",
-        "postgresql",
-        "mysql",
-        "mongodb",
-        "firebase",
-        "aws-sdk",
-        "docker",
-        "kubernetes",
-        "terraform",
-        "serverless",
-        "jest",
-        "react-testing-library",
-        "storybook",
-        "eslint",
-        "prettier",
-        "webpack",
-        "babel",
-        "typescript",
-        "flow",
-        "rust",
-        "go",
-        "java",
-        "python",
-        "ruby",
-        "php",
-      ].filter((item) => item.toLowerCase().includes(value.toLowerCase()));
-      setSuggestions(filteredSuggestions);
+      try {
+        const response = await axios.get(`https://api.npms.io/v2/search/suggestions?q=${value}`);
+        const suggestions = response.data?.map((pkg: any) => pkg.package.name) ?? [];
+        setSuggestions(suggestions);
+      } catch (error) {
+        console.error("Error fetching suggestions:", error);
+        setSuggestions([]);
+      }
     } else {
-      setSuggestions([]);
+      setSuggestions([]); // Clear suggestions when input is empty
     }
   };
 
