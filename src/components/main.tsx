@@ -40,6 +40,7 @@ const Main: React.FC = () => {
       setError("");
       if (query) {
         const result = await ai.generate(query);
+        console.log(result);
 
         if (!result || typeof result !== "string") {
           throw new Error("Empty or unexpected response format.");
@@ -56,7 +57,7 @@ const Main: React.FC = () => {
     } catch (error) {
       console.error("Error generating response:", error);
       setError("An error occurred while generating response. Please try again.");
-      toast.error("An error occurred. Please try again."); // Placeholder for toast error message
+      toast.error("An error occurred. Please try again."); 
     } finally {
       setLoading(false);
     }
@@ -213,14 +214,9 @@ const Main: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <button
-          className="text-blue-600 bg-white rounded-full p-2 shadow-lg"
-          onClick={() => {
-            toast.info("Example notification"); // Placeholder for toast notification
-          }}
-        >
-          <FiTrash2 className="w-6 h-6" />
-        </button>
+ 
+          <a href="https://www.producthunt.com/products/npm-suggester/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=590244&theme=neutral" alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt" style={{width: "250px", height: "54px"}} width="250" height="54" /></a>
+      
       </motion.div>
     </div>
   );

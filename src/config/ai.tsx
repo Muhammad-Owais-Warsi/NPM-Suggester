@@ -41,7 +41,7 @@ class AI {
 	async generate(query: string) {
 		try {
 			const result = await this.model.generateContent(prompt + query);
-
+			console.log(result.response.text());
 			return result.response.text();
 		} catch (error) {
 			console.error("Error fetching or parsing response:", error);
