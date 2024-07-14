@@ -162,7 +162,7 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 ">
+    <div className="relative flex flex-col justify-center  items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 ">
       <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl">
         {/* NPM Package Generator */}
         <motion.div

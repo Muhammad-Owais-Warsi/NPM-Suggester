@@ -34,7 +34,7 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center align-middle p-4 mb-4 bg-white dark:bg-gray-700 rounded-lg shadow-lg">
+    <div className="relative flex flex-col justify-center mx-auto p-4 mb-4 bg-white dark:bg-gray-700 rounded-lg shadow-lg">
       <div className="flex flex-col w-full">
         <div className="flex items-center mb-2">
           <p className="text-lg font-bold text-blue-500">{prop.no}.</p>
@@ -48,7 +48,7 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
           </a>
           <button
             onClick={handleCopy}
-            className="ml-4 p-1 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="ml-4 p-1 rounded  hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             title="Copy"
           >
             <FaCopy className="text-gray-700 dark:text-gray-300" />
