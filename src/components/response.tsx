@@ -34,13 +34,13 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center align-middle p-4 mb-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+    <div className="relative flex flex-col justify-center align-middle p-4 mb-4 bg-white dark:bg-gray-700 rounded-lg shadow-lg">
       <div className="flex flex-col w-full">
         <div className="flex items-center mb-2">
-          <p className="text-lg font-bold text-blue-600">{prop.no}.</p>
+          <p className="text-lg font-bold text-blue-500">{prop.no}.</p>
           <a
             href={prop.link}
-            className="underline ml-2 text-blue-600 font-bold text-xl"
+            className="underline ml-2 text-blue-500 font-bold text-xl"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -55,15 +55,15 @@ const ResponseBlock: React.FC<PropType> = ({ prop }) => {
           </button>
         </div>
         <div className="flex flex-col">
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="mb-2 text-gray-700 text-base md:text-lg dark:text-gray-300">
             {prop.description}
           </p>
-          <p className="text-gray-700 dark:text-gray-300 font-bold">
-            Weekly Downloads: {prop.weeklyDownloads?.toLocaleString() || "N/A"}
+          <p className="text-sky-500 text-sm md:text-base font-bold">
+            Weekly Downloads : {prop.weeklyDownloads?.toLocaleString() || "N/A"}
           </p>
           {prop.popularityRank && (
-            <p className="text-gray-700 dark:text-gray-300 font-bold">
-              Popularity Rank: {prop.popularityRank}
+            <p className="text-red-400 dark:text-red-300  text-sm md:text-base  font-bold">
+              Popularity Rank : {prop.popularityRank}
             </p>
           )}
         </div>

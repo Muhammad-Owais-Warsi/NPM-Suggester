@@ -162,17 +162,17 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700 ">
+    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 ">
       <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl">
         {/* NPM Package Generator */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-xl  dark:bg-gray-700 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
+          className="w-full max-w-xl  dark:bg-gray-800 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
         >
           <div className="mb-6 text-center">
-            <p className="text-3xl font-bold  text-blue-600 dark:text-black-300 ">
+            <p className="text-3xl font-bold  dark:text-cyan-400 text-blue-600 dark:text-black-300 ">
               NPM Package Suggester
             </p>
           </div>
@@ -265,44 +265,6 @@ const Main: React.FC = () => {
           onHistoryItemClick={handleHistoryItemClick}
           handleDeleteHistoryItem={handleDeleteHistoryItem} // Pass delete handler
         />
-
-        {/* Popular Packages Section */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="w-full max-w-xl bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
-        >
-          <div className="mb-6 text-center">
-            <p className="text-3xl font-bold text-blue-600 dark:text-black-300">Popular Packages</p>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.0, duration: 0.5 }}
-          >
-            {popularPackages.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-              >
-                <ResponseBlock
-                  prop={{
-                    no: idx + 1,
-                    package: item.package,
-                    description: item.description,
-                    link: item.link,
-                    weeklyDownloads: item.weeklyDownloads, // Pass weeklyDownloads
-                    popularityRank: idx + 1, // Pass popularity rank based on order
-                  }}
-                />
-              </motion.div> */}
-        {/* ))} */}
-        {/* </motion.div> */}
-        {/* </motion.div> */}
       </div>
     </div>
   );
