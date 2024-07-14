@@ -3,25 +3,31 @@ import axios from "axios"; // Import Axios for making HTTP requests
 import { ai } from "../config/ai";
 import { motion } from "framer-motion";
 import { toast } from "sonner"; // Placeholder for toast library
-import { FiLoader} from "react-icons/fi"; // Example loading icon from react-icons
+import { FiLoader, FiTrash2 } from "react-icons/fi"; // Example loading icon from react-icons
 import ResponseBlock from "./response";
 import HistorySection from "./HistorySection";
 import AutoSuggestion from "./AutoSuggestion"; // Import the new component
 
+// Add the PackageType interface here
 interface PackageType {
   package: string;
   description: string;
   link: string;
+  weeklyDownloads?: number; // Add the weeklyDownloads field
+  popularityRank?: number; // Add popularityRank field
 }
 
 const Main: React.FC = () => {
   const [query, setQuery] = useState<string>("");
-  const [response, setResponse] = useState<PackageType[] | undefined>(undefined);
+  const [response, setResponse] = useState<PackageType[] | undefined>(
+    undefined
+  );
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const [showHistory, setShowHistory] = useState<boolean>(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [popularPackages, setPopularPackages] = useState<PackageType[]>([]);
 
   useEffect(() => {
     const savedHistory = localStorage.getItem("searchHistory");
@@ -34,20 +40,64 @@ const Main: React.FC = () => {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }, [searchHistory]);
 
+  useEffect(() => {
+    fetchPopularPackages();
+  }, []);
+
+  const fetchPopularPackages = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.npms.io/v2/search?q=popularity:desc"
+      );
+      const packages = response.data.results.map((pkg: any) => ({
+        package: pkg.package.name,
+        description: pkg.package.description,
+        link: pkg.package.links.npm,
+      }));
+      setPopularPackages(packages.slice(0, 10)); // Display top 10 popular packages
+    } catch (error) {
+      console.error("Error fetching popular packages:", error);
+    }
+  };
+
   const generateResponse = async () => {
     try {
       setLoading(true);
       setError("");
       if (query) {
         const result = await ai.generate(query);
-        console.log(result);
 
         if (!result || typeof result !== "string") {
           throw new Error("Empty or unexpected response format.");
         }
 
         const parsedResult = JSON.parse(result) as PackageType[];
-        setResponse(parsedResult);
+
+        // Fetch weekly download data for each package
+        const packagesWithDownloads = await Promise.all(
+          parsedResult.map(async (pkg) => {
+            const downloadData = await axios.get(
+              `https://api.npmjs.org/downloads/point/last-week/${pkg.package}`
+            );
+            return {
+              ...pkg,
+              weeklyDownloads: downloadData.data.downloads,
+            };
+          })
+        );
+
+        // Sort packages by weekly downloads to determine popularity rank
+        packagesWithDownloads.sort((a, b) =>
+          (a.weeklyDownloads || 0) > (b.weeklyDownloads || 0) ? -1 : 1
+        );
+
+        // Assign popularity rank based on sorted order
+        const rankedPackages = packagesWithDownloads.map((pkg, index) => ({
+          ...pkg,
+          popularityRank: index + 1,
+        }));
+
+        setResponse(rankedPackages);
 
         const updatedHistory = [query, ...searchHistory].slice(0, 5);
         setSearchHistory(updatedHistory);
@@ -56,15 +106,17 @@ const Main: React.FC = () => {
       }
     } catch (error) {
       console.error("Error generating response:", error);
-      setError("An error occurred while generating response. Please try again.");
-      toast.error("An error occurred. Please try again."); 
+      setError(
+        "An error occurred while generating response. Please try again."
+      );
+      toast.error("An error occurred. Please try again."); // Placeholder for toast error message
     } finally {
       setLoading(false);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       generateResponse();
     }
   };
@@ -89,8 +141,11 @@ const Main: React.FC = () => {
     setQuery(value);
     if (value.trim() !== "") {
       try {
-        const response = await axios.get(`https://api.npms.io/v2/search/suggestions?q=${value}`);
-        const suggestions = response.data?.map((pkg: any) => pkg.package.name) ?? [];
+        const response = await axios.get(
+          `https://api.npms.io/v2/search/suggestions?q=${value}`
+        );
+        const suggestions =
+          response.data?.map((pkg: any) => pkg.package.name) ?? [];
         setSuggestions(suggestions);
       } catch (error) {
         console.error("Error fetching suggestions:", error);
@@ -107,17 +162,19 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8">
+    <div className="relative flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-700 ">
       <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl">
         {/* NPM Package Generator */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-xl bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
+          className="w-full max-w-xl  dark:bg-gray-700 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
         >
           <div className="mb-6 text-center">
-            <p className="text-3xl font-bold text-blue-600 dark:text-black-300">NPM Package Suggester</p>
+            <p className="text-3xl font-bold  text-blue-600 dark:text-black-300 ">
+              NPM Package Suggester
+            </p>
           </div>
 
           <motion.div
@@ -190,6 +247,8 @@ const Main: React.FC = () => {
                       package: item.package,
                       description: item.description,
                       link: item.link,
+                      weeklyDownloads: item.weeklyDownloads, // Pass weeklyDownloads
+                      popularityRank: item.popularityRank, // Pass popularityRank
                     }}
                   />
                 </motion.div>
@@ -206,18 +265,45 @@ const Main: React.FC = () => {
           onHistoryItemClick={handleHistoryItemClick}
           handleDeleteHistoryItem={handleDeleteHistoryItem} // Pass delete handler
         />
-      </div>
 
-      <motion.div
-        className="absolute bottom-4 right-4"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
- 
-          <a href="https://www.producthunt.com/products/npm-suggester/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-npm&#0045;suggester" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=590244&theme=neutral" alt="NPM&#0032;Suggester - Get&#0032;quick&#0032;recommendations&#0032;for&#0032;NPM&#0032;packages&#0046; | Product Hunt" style={{width: "250px", height: "54px"}} width="250" height="54" /></a>
-      
-      </motion.div>
+        {/* Popular Packages Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="w-full max-w-xl bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
+        >
+          <div className="mb-6 text-center">
+            <p className="text-3xl font-bold text-blue-600 dark:text-black-300">Popular Packages</p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+          >
+            {popularPackages.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+              >
+                <ResponseBlock
+                  prop={{
+                    no: idx + 1,
+                    package: item.package,
+                    description: item.description,
+                    link: item.link,
+                    weeklyDownloads: item.weeklyDownloads, // Pass weeklyDownloads
+                    popularityRank: idx + 1, // Pass popularity rank based on order
+                  }}
+                />
+              </motion.div> */}
+        {/* ))} */}
+        {/* </motion.div> */}
+        {/* </motion.div> */}
+      </div>
     </div>
   );
 };
