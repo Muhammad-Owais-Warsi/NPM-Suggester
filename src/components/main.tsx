@@ -55,6 +55,7 @@ const Main: React.FC = () => {
         link: pkg.package.links.npm,
       }));
       setPopularPackages(packages.slice(0, 10)); // Display top 10 popular packages
+      console.log(popularPackages)
     } catch (error) {
       console.error("Error fetching popular packages:", error);
     }
