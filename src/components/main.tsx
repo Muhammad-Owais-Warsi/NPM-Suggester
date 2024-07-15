@@ -3,7 +3,7 @@ import axios from "axios"; // Import Axios for making HTTP requests
 import { ai } from "../config/ai";
 import { motion } from "framer-motion";
 import { toast } from "sonner"; // Placeholder for toast library
-import { FiLoader, FiTrash2 } from "react-icons/fi"; // Example loading icon from react-icons
+import { FiLoader } from "react-icons/fi"; // Example loading icon from react-icons
 import ResponseBlock from "./response";
 import HistorySection from "./HistorySection";
 import AutoSuggestion from "./AutoSuggestion"; // Import the new component
