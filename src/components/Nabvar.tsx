@@ -27,13 +27,13 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-blue-600 dark:bg-gray-900 p-4 shadow-md flex justify-between md:flex-row flex-col">
+    <nav className="bg-blue-600 dark:bg-[#161f33] p-4 shadow-md flex justify-between md:flex-row ">
       {/* Animated H1 Tag */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.1 }}
-        className="flex items-center text-white dark:text-gray-100 text-2xl font-bold mb-4 pt-3 md:mb-0"
+        className="flex items-center text-white dark:text-gray-100 text-2xl font-bold mb-3 pt-3 md:mb-0"
       >
         <Link to="/">
           <motion.span
@@ -42,13 +42,13 @@ const NavBar: React.FC = () => {
             className="flex items-center space-x-2"
           >
             <RiNpmjsLine size={32} className="text-red-600" />
-            <span>NPM Suggester</span>
+            <span className="hidden md:block ">NPM Suggester</span>
           </motion.span>
         </Link>
       </motion.div>
 
       {/* Navigation Links */}
-      <ul className="flex flex-wrap md:flex-row space-x-6 pt-3 mb-4 md:mb-0 text-sm sm:text-md md:text-lg">
+      <ul className="flex flex-wrap md:flex-row space-x-6 pt-3 mb-4 md:mb-0 text-base sm:text-md md:text-lg">
         {["Home", "About", "Contact"].map((text, index) => (
           <motion.li
             key={text}
@@ -88,7 +88,7 @@ const NavBar: React.FC = () => {
           href="https://github.com/Muhammad-Owais-Warsi/NPM-Suggester"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-gray-100 font-semibold rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 text-sm sm:text-md md:text-lg"
+          className="items-center px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-gray-100 font-semibold rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300 text-sm md:text-base hidden lg:flex"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
