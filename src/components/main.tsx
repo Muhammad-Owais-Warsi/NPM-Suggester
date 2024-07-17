@@ -55,7 +55,7 @@ const Main: React.FC = () => {
         link: pkg.package.links.npm,
       }));
       setPopularPackages(packages.slice(0, 10)); // Display top 10 popular packages
-      console.log(popularPackages)
+      console.log(popularPackages);
     } catch (error) {
       console.error("Error fetching popular packages:", error);
     }
@@ -163,17 +163,17 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center  items-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 ">
-      <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-blue-600 px-4 py-8 dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800">
+      <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl items-center justify-center">
         {/* NPM Package Generator */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-xl  dark:bg-gray-800 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
+          className="w-full max-w-xl dark:bg-gray-800 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg"
         >
           <div className="mb-6 text-center">
-            <p className="text-3xl font-bold  dark:text-cyan-400 text-blue-600 dark:text-black-300 ">
+            <p className="text-3xl font-bold dark:text-cyan-400 text-blue-600">
               NPM Package Suggester
             </p>
           </div>
@@ -207,12 +207,12 @@ const Main: React.FC = () => {
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
-              className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300 flex justify-center items-center"
+              className="w-full px-4 py-2 bg-blue-600 text-sm sm:text-md md:text-xl text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300 flex justify-center items-center"
               onClick={generateResponse}
               disabled={loading}
             >
               {loading ? (
-                <FiLoader className="animate-spin inline-block mr-2 text-white" />
+                <FiLoader className="animate-spin inline-block mr-2   text-white" />
               ) : (
                 "Generate"
               )}
@@ -230,7 +230,7 @@ const Main: React.FC = () => {
                 initial={{ x: -10 }}
                 animate={{ x: 0 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="text-red-500"
+                className="text-red-500 text-sm text-center font-semibold"
               >
                 {error}
               </motion.p>

@@ -22,7 +22,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-md dark:bg-gray-800 bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg overflow-hidden"
+      className="w-full max-w-xl dark:bg-gray-800   min-h-[300px] bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg overflow-hidden"
     >
       <div className="mb-6 text-center">
         <p className="text-2xl sm:text-xl md:text-3xl font-bold text-blue-600 dark:text-cyan-400">
