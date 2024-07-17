@@ -12,24 +12,24 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col md:flex-row items-center justify-center text-black  dark:bg-gray-900 dark:text-gray-300">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center text-center text-black dark:bg-gray-900 dark:text-gray-300">
       <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-left md:w-1/2 px-8 py-16 md:py-0"
+        className="px-8 py-16"
       >
-        <div className="flex items-center mb-6">
-          <h1 className="text-4xl font-bold text-blue-500  dark:text-cyan-400">
+        <div className="mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-500 dark:text-cyan-400">
             Contact Us
           </h1>
         </div>
-        <p className="text-xl mb-8 max-w-prose">
-          We would love to hear from you. Please reach out to us using the form
-          below.
+        <p className="text-base md:text-xl mb-8 mx-auto">
+          We would love to hear from you. Please reach out to us on our social
+          handles.
         </p>
         {/* Social Media Icons */}
-        <div className="flex space-x-4">
+        <div className="flex justify-center space-x-4">
           <a
             href="https://twitter.com/example"
             target="_blank"
